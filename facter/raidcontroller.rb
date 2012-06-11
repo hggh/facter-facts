@@ -28,6 +28,10 @@ Facter.add("raidcontroller") do
 			controllers.push("linux_software_raid") if mdstat =~ /^md/mi
 		end
 
+		if File.exists?('/dev/cciss/c0d0')
+			controllers.push("cciss")
+		end
+
 		controllers.uniq.join(",")
 	end
 end
