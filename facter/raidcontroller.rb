@@ -9,6 +9,7 @@ Facter.add("raidcontroller") do
 			output.each do |line|
 				controllers.push("sas2ircu") if line =~ /SAS2008/
 				controllers.push("megaraid") if line =~ /(MegaRAID SAS 1078|MegaSAS 9260|MegaRAID SAS 9240)/
+				controllers.push("3ware") if line =~ /3ware Inc 9690SA/
 			end
 		end
 
