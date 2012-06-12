@@ -15,7 +15,7 @@ Facter.add("raidcontroller") do
 
 		if File.readable?("/proc/mpt/ioc0/info")
 			File.open("/proc/mpt/ioc0/info").each do |line|
-				if line =~ /LSISAS1068E/ or line =~/LSISAS1064E/
+				if line =~ /LSISAS1068E/ or line =~/LSISAS1064E/ or line =~ /Symbios Logic SAS1064ET/
 					if File.executable?('/usr/sbin/mpt-status')
 						output=%x{/usr/sbin/mpt-status}
 							controllers.push("sas1068") if output =~ /ioc0/m
