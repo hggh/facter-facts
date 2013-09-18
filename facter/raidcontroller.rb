@@ -11,6 +11,8 @@ Facter.add("raidcontroller") do
 				controllers.push("megaraid") if line =~ /(MegaRAID SAS 1078|MegaSAS 9260|MegaRAID SAS 9240|MegaRAID SAS 2208|MegaRAID SAS 2008)/
 				controllers.push("3ware") if line =~ /3ware Inc 9690SA/
 				controllers.push("aac-raid") if line =~ /Adaptec AAC-RAID/
+				controllers.push("cciss") if line =~ /Hewlett-Packard Company Smart Array G6 controllers/
+				controllers.push("areca") if line =~ /ARC-1210/
 			end
 		end
 
