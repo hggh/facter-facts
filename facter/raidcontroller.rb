@@ -36,6 +36,6 @@ Facter.add("raidcontroller") do
 			controllers.push("cciss")
 		end
 
-		controllers.uniq.join(",")
+		controllers.uniq.join(",") if controllers.count > 0
 	end
 end
