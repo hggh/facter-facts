@@ -1,11 +1,10 @@
-Facter.add("raidcontroller") do
+Facter.add(:raidcontroller) do
 	confine :kernel => :linux
 
 	setcode do
 		controllers = Array.new
 
-		if File.executable?("/usr/bin/lspci")
-			output = %x{/usr/bin/lspci}
+		if output = Facter::Util::Resolution.exec('lspci')
 			output.split(/\n/).each do |line|
 				controllers.push("sas2ircu") if line =~ /SAS2008/
 				controllers.push("megaraid") if line =~ /(MegaRAID SAS 1078|MegaSAS 9260|MegaRAID SAS 9240|MegaRAID SAS 2208|MegaRAID SAS 2008|MegaRAID SAS 2108)/
