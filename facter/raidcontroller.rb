@@ -1,4 +1,4 @@
-Facter.add("raidcontroller") do
+Facter.add(:raidcontroller) do
 	confine :kernel => :linux
 
 	setcode do
